@@ -8,10 +8,9 @@ DB_URI = "postgresql:///aecc_test_db";
 
 let db = new Client({
     connectionString: isProduction ? process.env.DATABASE_URL : DB_URI,
-    ssl: isProduction,
+    // ssl: isProduction,
 });
 
 db.connect();
 
 module.exports = db;
-
