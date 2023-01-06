@@ -6,7 +6,7 @@
 -- CREATE DATABASE aecc_db;
 -- \connect aecc_db;
 
-\connect DATABASE_URL;
+-- \connect process.env.DATABASE_URL;
 \i dbSchemas.sql;
 \i seed.sql
 
