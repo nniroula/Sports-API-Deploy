@@ -2,17 +2,15 @@ const { Client } = require('pg');
 
 let DB_URI;
 
-if(process.env.NODE_ENV === "test"){
-    DB_URI = "postgresql:///aecc_test_db";
-}else{
-    DB_URI = "postgresql:///aecc_db"
-}
+const isProduction = process.env.NODE_ENV === 'production'
+
+DB_URI = "postgresql:///aecc_test_db";
 
 let db = new Client({
-    connectionString: DB_URI
+    connectionString: isProduction ? process.env.DATABASE_URL : DB_URI,
+    ssl: isProduction,
 });
 
-// establish a connection to database
 db.connect();
 
 module.exports = db;
